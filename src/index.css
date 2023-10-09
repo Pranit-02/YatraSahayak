@@ -176,8 +176,7 @@ select {
     text-align: center;
     font-size: 1rem;
     padding: 12px 15px;
-
-
+    width: 400px;
 }
 
 hr {
@@ -453,6 +452,35 @@ input {
     border-radius: 25px;
 }
 
+@media only screen and (max-width: 600px) {
+
+    .locations-container::after {
+        display: none;
+    }
+
+    .locations-item {
+        width: 100%;
+        padding-right: 0;
+        justify-content: center;
+    }
+
+    .locations-item:nth-child(odd) {
+        justify-content: center;
+        padding-left: 0;
+    }
+
+    .locations-item-content {
+        max-width: 90%;
+        text-align: center;
+        align-items: center;
+    }
+
+    .locations-item-content::after,
+    .locations-item-content .circle {
+        display: none;
+    }
+}
+
 
 /* hotels css */
 
@@ -587,9 +615,26 @@ b {
 
 .bus-card {
     display: flex;
-    justify-content: space-around;
 }
 
+.box{
+    height: 30px;
+    width: 100px;
+    color:#fff;
+    background-color: #e17b77;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.all-tags {
+    display: flex;
+    justify-content: flex-start;
+    gap: 20px;
+    margin-bottom: 3%;
+}
 .sub-card {
     display: flex;
     flex-direction: column;
@@ -598,6 +643,10 @@ b {
 
 @media (max-width:960px) {
     .bus-card {
+        flex-wrap: wrap;
+    }
+
+    .flight-card {
         flex-wrap: wrap;
     }
 }
@@ -609,12 +658,30 @@ b {
     color: #777;
 }
 
+.flight-card {
+    display: flex;
+}
+
 /* Trains */
 
 .train-card {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+}
+
+.train-info {
     margin-top: 3%;
+    color: #777;
+}
+
+.travel-details {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
     margin-bottom: 5%;
+}
+
+@media (max-width:960px){
+    .travel-details{
+        flex-direction: column;
+    }
 }

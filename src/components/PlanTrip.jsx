@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useNavigate } from 'react-router-dom';
 
@@ -7,66 +6,65 @@ function PlanTrip() {
     const navigate = useNavigate();
 
     //Dropdown
-    const [selectedStart, setSelectedStart] = useState('');
-    const handleSelectStart = (event) => {
-        setSelectedStart(event.target.value);
+    const [start_location, setStart_location] = useState('');
+    const handleStart_location = (event) => {
+        setStart_location(event.target.value);
     };
 
-    const [selectedEnd, setSelectedEnd] = useState('');
-    const handleSelectEnd = (event) => {
-        setSelectedEnd(event.target.value);
+    const [destination, setDestination] = useState('');
+    const handleDestination = (event) => {
+        setDestination(event.target.value);
     };
 
     //Date
-    const [startDate, setStartDate] = useState(new Date());
-    const [endDate, setEndDate] = useState(new Date());
+    const [date_of_departure, setDate_of_departure] = useState('');
+    const [date_of_return, setDate_of_return] = useState('');
 
     //Count Days
-    const [days, setDays] = useState(1);
+    const [duration_of_stay, setDuration_of_stay] = useState(1);
 
     const handleIncrement = () => {
-        setDays(prevDays => prevDays + 1);
+        setDuration_of_stay(prevDuration_of_stay => prevDuration_of_stay + 1);
     };
 
     const handleDecrement = () => {
-        if (days > 1) {
-            setDays(prevDays => prevDays - 1);
+        if (duration_of_stay > 1) {
+            setDuration_of_stay(prevDuration_of_stay => prevDuration_of_stay - 1);
         }
     };
 
     //Price
-    const [price, setPrice] = useState('');
+    const [budget, setBudget] = useState('');
 
-    const handleChange = (event) => {
-        setPrice(event.target.value);
-    };
-
-    //code just for reference
-    
     // const handleChange = (event) => {
-    //     const newValue = parseFloat(event.target.value) * 100;
-
-    //     setPrice(isNaN(newValue) ? '' : newValue);
+    //     setBudget(event.target.value);
     // };
+    const handleChange = (event) => {
+        const inputValue = event.target.value;
+        if (/^\d*$/.test(inputValue)) { 
+            setBudget(Number(inputValue));
+        }
+    };
+    
 
     //No of people
-    const [people, setPeople] = useState(1);
+    const [num_travelers, setNum_travelers] = useState(1);
 
-    const handlePeople = (event) => {
-        const newValue = parseInt(event.target.value, 10); 
+    const handleNum_travelers = (event) => {
+        const newValue = parseInt(event.target.value, 10);
 
-        setPeople(isNaN(newValue) ? 1 : newValue);
+        setNum_travelers(isNaN(newValue) ? 1 : newValue);
     };
 
     // Defined the initial state of the form data
     const [formData, setFormData] = useState({
-        selectedStart: "",
-        selectedEnd: "",
-        startDate: new Date(),
-        endDate: new Date(),
-        days: 1,
-        price: '',
-        people: 1,
+        start_location: '',
+        destination: '',
+        date_of_departure: '',
+        date_of_return: '',
+        duration_of_stay: 1,
+        budget: '',
+        num_travelers: 1,
     });
 
     // Defined the handleSubmit function that handles the form submission
@@ -76,13 +74,13 @@ function PlanTrip() {
         setFormData((prevFormData) => {
             return {
                 ...prevFormData,
-                selectedStart: selectedStart,
-                selectedEnd: selectedEnd,
-                startDate: startDate,
-                endDate: endDate,
-                days: days,
-                price: price,
-                people: people,
+                start_location: start_location,
+                destination: destination,
+                date_of_departure: date_of_departure,
+                date_of_return: date_of_return,
+                duration_of_stay: duration_of_stay,
+                budget: budget,
+                num_travelers: num_travelers,
             };
         });
 
@@ -103,9 +101,9 @@ function PlanTrip() {
 
                     <p className='mid-text'>What is the starting location ?</p>
                     <div>
-                        <select className='drop-down' value={selectedStart} onChange={handleSelectStart}>
+                        <select className='drop-down' value={start_location} onChange={handleStart_location} required>
                             <option value="">Select City</option>
-                            <option value="option1">Ahmedabad, India</option>
+                            <option value="Ahmedabad">Ahmedabad</option>
 
                         </select>
                     </div>
@@ -113,36 +111,37 @@ function PlanTrip() {
 
                     <p className='mid-text'>What is destination of choice ?</p>
                     <div>
-                        <select className='drop-down' value={selectedEnd} onChange={handleSelectEnd}>
+                        <select className='drop-down' value={destination} onChange={handleDestination} required>
                             <option value="">Select City</option>
-                            <option value="option1">Mumbai, India</option>
+                            <option value="Mumbai">Mumbai</option>
 
                         </select>
                     </div>
                     <hr />
 
                     <p className='mid-text'>When are you planning to travel ?</p>
-                    <div className="datePickerDiv">
-                        <DatePicker
-                            selected={startDate}
-                            onChange={setStartDate}
-                            selectsStart
-                            startDate={startDate}
-                            endDate={endDate}
-                            className='Date'
-                            dateFormat="dd/MM/yyyy"
-                        />
-                        <DatePicker
-                            selected={endDate}
-                            onChange={setEndDate}
-                            selectsEnd
-                            startDate={startDate}
-                            endDate={endDate}
-                            minDate={startDate}
-                            className='Date'
-                            dateFormat="dd/MM/yyyy"
-                        />
-                    </div>
+                    
+
+                        <div className="datePickerDiv">
+                            <input
+                                type='date'
+                                name='date_of_departure'
+                                className='Date'
+                                value={date_of_departure}
+                                onChange={(event) => setDate_of_departure(event.target.value)}
+                                required
+                            />
+                            <input
+                                type='date'
+                                name='date_of_return'
+                                className='Date'
+                                value={date_of_return}
+                                onChange={(event) => setDate_of_return(event.target.value)}
+                                min={date_of_departure}
+                                required
+                            />
+                        </div>
+                    
 
                     <hr />
 
@@ -154,7 +153,7 @@ function PlanTrip() {
                                 -
                             </p>
                             <p style={{ display: "inline-block", margin: "10px" }}>
-                                {days}
+                                {duration_of_stay}
                             </p>
                             <p className="counter" onClick={handleIncrement} style={{ margin: "10px" }}>
                                 +
@@ -167,11 +166,12 @@ function PlanTrip() {
                     <p>The budget is exclusively allocated for travellingg and dining purposes.</p>
 
                     <input
-                        id="price"
-                        name="price"
-                        type="number"
-                        value={price}
+                        id="budget"
+                        name="budget"
+                        type="text"
+                        value={budget}
                         onChange={handleChange}
+                        required
                     />
 
 
@@ -180,11 +180,12 @@ function PlanTrip() {
                     <p className='mid-text'>What is the number of people travelling ?</p>
                     <div className='people-count'>
                         <input
-                            id="people"
-                            name="people"
+                            id="num_travelers"
+                            name="num_travelers"
                             type="number"
-                            value={people}
-                            onChange={handlePeople}
+                            value={num_travelers}
+                            onChange={handleNum_travelers}
+                            required
                         />
                     </div>
 

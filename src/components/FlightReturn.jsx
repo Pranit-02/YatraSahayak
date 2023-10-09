@@ -1,9 +1,18 @@
 import React from 'react';
+import { trainReturn } from './data';
 
 
 const FlightReturn = ({ flightsReturn }) => (
     <div className="card">
         <div className="card-content">
+            <div className="all-tags">
+                <div className="box">
+                    {flightsReturn.type}
+                </div>
+                <div className="box">
+                    {flightsReturn.card_state}
+                </div>
+            </div>
             <h2 className="card-title">{flightsReturn.airline}</h2>
 
             <div className="flights-info">
@@ -18,8 +27,8 @@ const FlightReturn = ({ flightsReturn }) => (
                 <p><b>Destination:</b> {flightsReturn.destination}</p>
                 <p><b>Departure:</b> {flightsReturn.departure}</p>
             </div>
-            <p className="price">Price: ₹ {flightsReturn.price}</p>
-        </div>    
+            <p className="price">Price: ₹ {flightsReturn.prices}</p>
+        </div>
     </div>
 );
 

@@ -4,6 +4,14 @@ import React from 'react';
 const Flight = ({ flights }) => (
     <div className="card">
         <div className="card-content">
+            <div className="all-tags">
+                <div className="box">
+                    {flights.type}
+                </div>
+                <div className="box">
+                    {flights.card_state}
+                </div>
+            </div>
             <h2 className="card-title">{flights.airline}</h2>
 
             <div className="flights-info">
@@ -18,8 +26,8 @@ const Flight = ({ flights }) => (
                 <p><b>Destination:</b> {flights.destination}</p>
                 <p><b>Departure:</b> {flights.departure}</p>
             </div>
-            <p className="price">Price: ₹ {flights.price}</p>
-        </div>    
+            <p className="price">Price: ₹ {flights.prices}</p>
+        </div>
     </div>
 );
 
