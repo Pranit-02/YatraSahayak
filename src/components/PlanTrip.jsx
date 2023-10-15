@@ -2,6 +2,12 @@ import React, { useState, useEffect } from 'react';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useNavigate } from 'react-router-dom';
 
+function formatDateToDDMMYYYY(date) {
+    if (!date) return '';
+    const [year, month, day] = date.split('-');
+    return `${day}/${month}/${year}`;
+  }
+
 function PlanTrip() {
     const navigate = useNavigate();
 
@@ -90,7 +96,12 @@ function PlanTrip() {
     };
 
     useEffect(() => {
-        console.log(formData);
+        const formattedFormData = {
+            ...formData,
+            date_of_departure: formatDateToDDMMYYYY(formData.date_of_departure),
+            date_of_return: formatDateToDDMMYYYY(formData.date_of_return),
+        };
+        console.log(formattedFormData);
     }, [formData]);
 
     return (
@@ -103,7 +114,15 @@ function PlanTrip() {
                     <div>
                         <select className='drop-down' value={start_location} onChange={handleStart_location} required>
                             <option value="">Select City</option>
-                            <option value="Ahmedabad">Ahmedabad</option>
+                            <option value="ahamdabad">ahamdabad</option>
+                            <option value="bengaluru">bengaluru</option>
+                            <option value="delhi">delhi</option>
+                            <option value="indore">indore</option>
+                            <option value="kolhapur">kolhapur</option>
+                            <option value="nagpur">nagpur</option>
+                            <option value="nashik">nashik</option>
+                            <option value="panaji">panaji</option>
+                            <option value="pune">pune</option>
 
                         </select>
                     </div>
