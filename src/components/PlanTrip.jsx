@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useNavigate } from 'react-router-dom';
+import Loading from './Loading';
 
 function formatDateToDDMMYYYY(date) {
     if (!date) return '';
     const [year, month, day] = date.split('-');
-    return `${day}/${month}/${year}`;
+    return `${day}-${month}-${year}`;
   }
 
 function PlanTrip() {
     const navigate = useNavigate();
-
+    const [isLoading, setIsLoading] = useState(false)
     //Dropdown
     const [start_location, setStart_location] = useState('');
     const handleStart_location = (event) => {
@@ -90,7 +91,11 @@ function PlanTrip() {
             };
         });
 
-        await new Promise(resolve => setTimeout(resolve, 1000));
+        setIsLoading(true);
+        
+        await new Promise((resolve) => setTimeout(resolve, 5000));
+        
+        setIsLoading(false);
 
         navigate('/Itinerary');
     };
@@ -182,7 +187,7 @@ function PlanTrip() {
                     <hr />
 
                     <p className='mid-text'>What's your budget ?</p>
-                    <p>The budget is exclusively allocated for travellingg and dining purposes.</p>
+                    <p>The budget is exclusively allocated for travelling and dining purposes.</p>
 
                     <input
                         id="budget"
@@ -215,6 +220,7 @@ function PlanTrip() {
                 </div>
 
             </form>
+            {isLoading && <Loading/>}
         </div>
 
     )

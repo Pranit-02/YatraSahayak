@@ -1,12 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Navbar from './components/Navbar'
 import PlanTrip from './components/PlanTrip'
 import Blog from './components/Blog'
 import Feedback from './components/Feedback'
 import Itinerary from './components/Itinerary'
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom'
+// import { color } from 'html2canvas/dist/types/css/types/color'
 
 function App() {
+
   return (
     <>
       <Router>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import Locations from './Locations';
 import Hotels from './Hotels';
 import Restaurants from './Restaurants';
@@ -12,9 +12,29 @@ import Flight from './Flight';
 import FlightReturn from './FlightReturn';
 import Trains from './Trains';
 import TrainsReturn from './TrainsReturn';
+import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf';
 
 
 function Itinerary() {
+    const pdfRef = useRef();
+    const downloadPDF = () => {
+        const input = pdfRef.current;
+        html2canvas(input).then((canvas) => {
+            const imgData = canvas.toDataURL('image/png');
+            const pdf = new jsPDF('p', 'mm', 'a4', true);
+            const pdfWidth = pdf.internal.pageSize.getWidth();
+            const pdfHeight = pdf.internal.pageSize.getHeight();
+            const imgWidth = canvas.width;
+            const imgHeight = canvas.height;
+            const ratio = Math.min(pdfWidth / imgWidth, pdfHeight / imgHeight);
+            const imgX = (pdfWidth - imgWidth * ratio) / 2;
+            const imgY = 15;
+            pdf.addImage(imgData, 'PNG', imgX, imgY, imgWidth * ratio, imgHeight * ratio);
+            pdf.save('itinerary.pdf')
+
+        });
+    }
 
     const minBusPriceInitial = Math.min(...busData.map((bus) => bus.prices));
     const minBusPriceReturn = Math.min(...busDataReturn.map((bus) => bus.prices));
@@ -46,8 +66,49 @@ function Itinerary() {
         lowestPriceModeReturn = 'train';
     }
 
+
+
+    const [minPrice, setMinPrice] = useState(0);
+    const [maxPrice, setMaxPrice] = useState(18000);
+    const [filteredHotels, setFilteredHotels] = useState(hotels);
+    const [newFilteredResto, setNewFilteredResto] = useState(restaurants)
+
+    const handlePriceRangeChange = (min, max) => {
+        setMinPrice(min);
+        setMaxPrice(max);
+
+        // Filter hotels based on the selected price range
+        const filtered = hotels.filter(hotel => hotel.price >= min && hotel.price <= max);
+        setFilteredHotels(filtered);
+
+        
+    };
+
+    const handleRestoPriceRangeChange = (min, max) => {
+        setMinPrice(min);
+        setMaxPrice(max);
+
+        // Filter restaurants based on the selected price range
+        const newFiltered = restaurants.filter(restaurant => restaurant.price >= min && restaurant.price <= max)
+        setNewFilteredResto(newFiltered);
+
+    }
+
+    const showAllHotels = () => {
+        // Show all hotels
+        setFilteredHotels(hotels);
+    };
+
+    const showAllRestaurants = () => {
+        // Show all restaurants
+        setNewFilteredResto(restaurants);
+    };
+
+
+
     return (
-        <div className='container-new'>
+
+        <div className='container-new' ref={pdfRef} >
             <h1 className='head-1'>Travel in Mumbai</h1>
             <div className='sub-head'>
                 <HiPaperAirplane className='sub-head-img' />
@@ -70,24 +131,57 @@ function Itinerary() {
             <h1 className='head-3'>Estimated Cost (INR)</h1>
 
             <h2 className='all-sub-head'>Hotel:</h2>
+
+
             <div className='hotel-card'>
-                {hotels.map((hotels, index) => (
-                    <Hotels key={index} hotels={hotels} />
-                ))}
+                <div className="filters">
+                    <button className="range" onClick={showAllHotels}>All</button>
+                    <button className="range" onClick={() => handlePriceRangeChange(1500, 3000)}>1500-3000</button>
+                    <button className="range" onClick={() => handlePriceRangeChange(3000, 6000)}>3000-6000</button>
+                    <button className="range" onClick={() => handlePriceRangeChange(6000, 9000)}>6000-9000</button>
+                    <button className="range" onClick={() => handlePriceRangeChange(9000, 12000)}>9000-12000</button>
+                    <button className="range" onClick={() => handlePriceRangeChange(12000, 15000)}>12000-15000</button>
+                    <button className="range" onClick={() => handlePriceRangeChange(15000, 18000)}>15000-18000</button>
+
+                </div>
+                <div className="content-card">
+                    {filteredHotels.length > 0 ? (
+                        filteredHotels.map((hotels, index) => (
+                            <Hotels key={index} hotels={hotels} />
+                        ))
+                    ) : (
+                        <p>No hotels are available at this price</p>
+                    )}
+                </div>
             </div>
             <hr />
 
             <h2 className='all-sub-head'>Restaurant:</h2>
             <div className='hotel-card'>
-                {restaurants.map((restaurants, index) => (
-                    <Restaurants key={index} restaurants={restaurants} />
-                ))}
+                <div className="filters">
+                    <button className="range" onClick={showAllRestaurants}>All</button>
+                    <button className="range" onClick={() => handleRestoPriceRangeChange(400, 700)}>400-700</button>
+                    <button className="range" onClick={() => handleRestoPriceRangeChange(700, 1000)}>700-1000</button>
+                    <button className="range" onClick={() => handleRestoPriceRangeChange(1000, 1200)}>1000-1200</button>
+                    <button className="range" onClick={() => handleRestoPriceRangeChange(1200, 1500)}>1200-1500</button>
+                    <button className="range" onClick={() => handleRestoPriceRangeChange(1500, 1800)}>1500-1800</button>
+                    <button className="range" onClick={() => handleRestoPriceRangeChange(1800, 2000)}>1800-2000</button>
+                </div>
+                <div className="content-card">
+                {newFilteredResto.length > 0 ? (
+                    newFilteredResto.map((restaurants, index) => (
+                        <Restaurants key={index} restaurants={restaurants} />
+                    ))
+                ) : (
+                    <p>No restaurants are available at this price</p>
+                )}
+                </div>
             </div>
 
             <hr />
 
 
-                <h2 className="all-sub-head">Travel Details :</h2>
+            <h2 className="all-sub-head">Travel Details :</h2>
             <div className="travel-details">
                 {/* <h2 className='all-sub-head'>Bus Details:</h2> */}
                 <div className='bus-card'>
@@ -146,9 +240,16 @@ function Itinerary() {
                 </div>
             </div>
 
+            <hr />
+            <div className="link-button1">
+                <a href="/">Generate Again</a> <span />
+                <button className='btn-hover' onClick={downloadPDF}>Download Itinerary (PDF)</button>
+            </div>
 
         </div>
     );
 }
+
+
 
 export default Itinerary;

@@ -41,6 +41,49 @@ export const hotels = [
         avg_review: "Very good",
         reviews_count: "1,612",
         availability: "",
+        category: "1500-3000",
+        map_link: "https://www.booking.com/hotel/in/taj-president.en-gb.html?label=gen173nr-1BCAEoggI46AdIM1gEaGyIAQGYAQm4ARfIAQzYAQHoAQGIAgGoAgO4Aon0hacGwAIB0gIkZGJhYmFmNjctZmU0Mi00YTNjLThiMmMtMTJhMmU5OTkyMTY22AIF4AIB&sid=44af9f03569120f262256273dae3761a&aid=304142&ucfs=1&arphpl=1&checkin=2023-09-01&checkout=2023-09-02&dest_id=-2092174&dest_type=city&group_adults=1&req_adults=1&no_rooms=1&group_children=1&req_children=1&age=10&req_age=10&hpos=1&hapos=1&sr_order=popularity&srpvid=2ae960b402b100b1&srepoch=1693575919&all_sr_blocks=7473606_218722826_1_2_0&highlighted_blocks=7473606_218722826_1_2_0&matching_block_id=7473606_218722826_1_2_0&sr_pri_blocks=7473606_218722826_1_2_0__700000&from_sustainable_property_sr=1&from=searchresults&map=1"
+    },
+    {
+        checkin: "01-11-2023",
+        checkout: "02-11-2023",
+        hotel_name: "Trident Bandra Kurla",
+        location: "Bandra, Mumbai",
+        price: 7500,
+        price_for: "1 night, 1 adult, 1 child",
+        score: 2.2,
+        avg_review: "Fabulous",
+        reviews_count: "3,584",
+        availability: "",
+        category: "3000-6000",
+        map_link: "https://www.booking.com/hotel/in/the-trident-bandra-kurla.en-gb.html?label=gen173nr-1BCAEoggI46AdIM1gEaGyIAQGYAQm4ARfIAQzYAQHoAQGIAgGoAgO4Aon0hacGwAIB0gIkZGJhYmFmNjctZmU0Mi00YTNjLThiMmMtMTJhMmU5OTkyMTY22AIF4AIB&sid=44af9f03569120f262256273dae3761a&aid=304142&ucfs=1&arphpl=1&checkin=2023-09-01&checkout=2023-09-02&dest_id=-2092174&dest_type=city&group_adults=1&req_adults=1&no_rooms=1&group_children=1&req_children=1&age=10&req_age=10&hpos=2&hapos=2&sr_order=popularity&srpvid=2ae960b402b100b1&srepoch=1693575919&all_sr_blocks=39920801_352834357_1_42_0&highlighted_blocks=39920801_352834357_1_42_0&matching_block_id=39920801_352834357_1_42_0&sr_pri_blocks=39920801_352834357_1_42_0__750000&from_sustainable_property_sr=1&from=searchresults&map=1"
+    },
+    {
+        checkin: "2023-09-01",
+        checkout: "2023-09-02",
+        hotel_name: "Treebo Trend Seven Olives",
+        location: "Western Suburbs, Mumbai",
+        price: 2753,
+        price_for: "1 night, 1 adult, 1 child",
+        score: 2.05,
+        avg_review: "Very good",
+        reviews_count: "33",
+        availability: "Breakfast included",
+        category: "1500-3000",
+        map_link: "https://www.booking.com/hotel/in/taj-president.en-gb.html?label=gen173nr-1BCAEoggI46AdIM1gEaGyIAQGYAQm4ARfIAQzYAQHoAQGIAgGoAgO4Aon0hacGwAIB0gIkZGJhYmFmNjctZmU0Mi00YTNjLThiMmMtMTJhMmU5OTkyMTY22AIF4AIB&sid=44af9f03569120f262256273dae3761a&aid=304142&ucfs=1&arphpl=1&checkin=2023-09-01&checkout=2023-09-02&dest_id=-2092174&dest_type=city&group_adults=1&req_adults=1&no_rooms=1&group_children=1&req_children=1&age=10&req_age=10&hpos=1&hapos=1&sr_order=popularity&srpvid=2ae960b402b100b1&srepoch=1693575919&all_sr_blocks=7473606_218722826_1_2_0&highlighted_blocks=7473606_218722826_1_2_0&matching_block_id=7473606_218722826_1_2_0&sr_pri_blocks=7473606_218722826_1_2_0__700000&from_sustainable_property_sr=1&from=searchresults&map=1"
+    },
+    {
+        checkin: "2023-09-01",
+        checkout: "2023-09-02",
+        hotel_name: "Hotel Ariana Residency",
+        location: "Western Suburbs, Mumbai",
+        price: 3843,
+        price_for: "1 night, 1 adult, 1 child",
+        score: 1.6997,
+        avg_review: "review score",
+        reviews_count: "326",
+        availability: "",
+        category: "3000-6000",
         map_link: "https://www.booking.com/hotel/in/taj-president.en-gb.html?label=gen173nr-1BCAEoggI46AdIM1gEaGyIAQGYAQm4ARfIAQzYAQHoAQGIAgGoAgO4Aon0hacGwAIB0gIkZGJhYmFmNjctZmU0Mi00YTNjLThiMmMtMTJhMmU5OTkyMTY22AIF4AIB&sid=44af9f03569120f262256273dae3761a&aid=304142&ucfs=1&arphpl=1&checkin=2023-09-01&checkout=2023-09-02&dest_id=-2092174&dest_type=city&group_adults=1&req_adults=1&no_rooms=1&group_children=1&req_children=1&age=10&req_age=10&hpos=1&hapos=1&sr_order=popularity&srpvid=2ae960b402b100b1&srepoch=1693575919&all_sr_blocks=7473606_218722826_1_2_0&highlighted_blocks=7473606_218722826_1_2_0&matching_block_id=7473606_218722826_1_2_0&sr_pri_blocks=7473606_218722826_1_2_0__700000&from_sustainable_property_sr=1&from=searchresults&map=1"
     }
 ];
@@ -49,7 +92,59 @@ export const restaurants = [
     {
         restaurant: "Sigree Global Grill",
         ratings: 4.3,
-        price: 1500,
+        price: 1400,
+        location: {
+            landmark: "Ventura Building",
+            city: "Powai",
+            main_city: "Powai"
+        },
+        category: "1200-1500",
+        cuisine: {
+            1: "North Indian",
+            2: "Biryani",
+            3: "",
+            4: "",
+            5: ""
+        }
+    },
+    {
+        restaurant: "Sigree Global Grill",
+        ratings: 4.3,
+        price: 1000,
+        location: {
+            landmark: "Ventura Building",
+            city: "Powai",
+            main_city: "Powai"
+        },
+        cuisine: {
+            1: "North Indian",
+            2: "Biryani",
+            3: "",
+            4: "",
+            5: ""
+        }
+    },
+    {
+        restaurant: "Sigree Global Grill",
+        ratings: 4.3,
+        price: 479,
+        location: {
+            landmark: "Ventura Building",
+            city: "Powai",
+            main_city: "Powai"
+        },
+        cuisine: {
+            1: "North Indian",
+            2: "Biryani",
+            3: "",
+            4: "",
+            5: ""
+        }
+    },
+    {
+        restaurant: "Sigree Global Grill",
+        ratings: 4.3,
+        price: 800,
         location: {
             landmark: "Ventura Building",
             city: "Powai",
