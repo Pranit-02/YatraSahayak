@@ -1,0 +1,44 @@
+
+.main-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 90vh; /* Ensures the section takes at least the full height of the viewport */
+    padding: 20px 16px 15px; /* Adjust padding as needed */
+    background: url('./images/bg.png') center/cover no-repeat; 
+
+        
+}
+
+.text-content{
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+h1{
+    max-width: 60rem;
+    margin: 0 auto;
+    font-size: 3em;
+    font-weight: bold;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    line-height: 1.4;
+}
+
+span{
+    font-size: 3rem;
+    color: #e17b77;
+    
+}
+
+p{
+    font-size: 24px; 
+    margin-bottom: 12px; 
+    padding-bottom: 25px;
+    font-weight: 200;
+}

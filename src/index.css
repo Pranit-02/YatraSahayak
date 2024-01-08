@@ -4,6 +4,9 @@
     box-sizing: border-box;
     font-family: 'Inter', sans-serif;
 }
+::selection{
+    color: #100d54;
+}
 
 li {
     list-style: none;
@@ -25,16 +28,21 @@ a {
 
 }
 
+.logo-link {
+    display: flex;
+    align-items: center;
+    color: black;
+}
+
 .logo {
     max-width: 34px;
     max-height: 34px;
-    left: 5px;
-
+    left: 5px; 
 }
 
 .logo-text {
     font-size: 20px;
-
+    
 }
 
 .nav-logo {
@@ -841,3 +849,5 @@ b {
     border-radius: 50%;
     background: white;
   }
+
+  

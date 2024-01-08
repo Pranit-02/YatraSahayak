@@ -8,13 +8,17 @@ function Navbar() {
     const [Mobile, setMobile] = useState(false)
     return (
         <nav className='navbar'>
-            <div className='nav-logo'>
-                <img className='logo' src='./public/images/logo.png' />
-                <h3 className='logo-text'>YatraSahayak</h3>
-            </div>
+
+<div className='nav-logo'>
+    <Link to='/' className='logo-link'>
+        <img className='logo' src='./public/images/logo.png' alt='Logo' />
+        <h3 className='logo-text'>YatraSahayak</h3>
+    </Link>
+</div>
+
 
             <ul className={Mobile ? "nav-links-mobile" : "nav-links"} onClick={() => setMobile(false)}>
-                <Link to='/'><li>Trip Planner</li></Link>
+                <Link to='/plan'><li>Trip Planner</li></Link>
                 <Link to='/blog'><li>Blog</li></Link>
                 <Link to='/feedback'><li>Feedback</li></Link>
             </ul>
